@@ -1,0 +1,4 @@
+/home/jin/cmake-3.17.0-rc1/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /mnt/c/Users/26451/Desktop/socket
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/c/Users/26451/Desktop/socket/cmake-build-debug
