@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/client2.dir/client.cpp.o CMakeFiles/client2.dir/common.cpp.o  -o client2 

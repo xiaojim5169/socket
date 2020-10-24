@@ -70,8 +70,11 @@ CMAKE_BINARY_DIR = /mnt/c/Users/26451/Desktop/socket/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/client4.dir/all
+all: CMakeFiles/client2.dir/all
 all: CMakeFiles/client1.dir/all
 all: CMakeFiles/client.dir/all
+all: CMakeFiles/client3.dir/all
 all: CMakeFiles/server.dir/all
 
 .PHONY : all
@@ -82,11 +85,68 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/client4.dir/clean
+clean: CMakeFiles/client2.dir/clean
 clean: CMakeFiles/client1.dir/clean
 clean: CMakeFiles/client.dir/clean
+clean: CMakeFiles/client3.dir/clean
 clean: CMakeFiles/server.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/client4.dir
+
+# All Build rule for target.
+CMakeFiles/client4.dir/all:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/depend
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles --progress-num=13,14,15 "Built target client4"
+.PHONY : CMakeFiles/client4.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/client4.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/client4.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/client4.dir/rule
+
+# Convenience name for target.
+client4: CMakeFiles/client4.dir/rule
+
+.PHONY : client4
+
+# clean rule for target.
+CMakeFiles/client4.dir/clean:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/clean
+.PHONY : CMakeFiles/client4.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/client2.dir
+
+# All Build rule for target.
+CMakeFiles/client2.dir/all:
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/depend
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles --progress-num=7,8,9 "Built target client2"
+.PHONY : CMakeFiles/client2.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/client2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/client2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/client2.dir/rule
+
+# Convenience name for target.
+client2: CMakeFiles/client2.dir/rule
+
+.PHONY : client2
+
+# clean rule for target.
+CMakeFiles/client2.dir/clean:
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/clean
+.PHONY : CMakeFiles/client2.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/client1.dir
@@ -143,13 +203,40 @@ CMakeFiles/client.dir/clean:
 .PHONY : CMakeFiles/client.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/client3.dir
+
+# All Build rule for target.
+CMakeFiles/client3.dir/all:
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/depend
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles --progress-num=10,11,12 "Built target client3"
+.PHONY : CMakeFiles/client3.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/client3.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/client3.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/client3.dir/rule
+
+# Convenience name for target.
+client3: CMakeFiles/client3.dir/rule
+
+.PHONY : client3
+
+# clean rule for target.
+CMakeFiles/client3.dir/clean:
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/clean
+.PHONY : CMakeFiles/client3.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/server.dir
 
 # All Build rule for target.
 CMakeFiles/server.dir/all:
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/depend
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles --progress-num=7,8,9 "Built target server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/26451/Desktop/socket/cmake-build-debug/CMakeFiles --progress-num=16,17,18 "Built target server"
 .PHONY : CMakeFiles/server.dir/all
 
 # Build rule for subdir invocation for target.

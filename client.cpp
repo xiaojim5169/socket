@@ -14,6 +14,7 @@ int main(){
 
     Connect(fd,(struct sockaddr *)&addr,sizeof(addr));
     printf("服务器连接成功！\n");
+    printf("是否拥有账号？(Y/n)\nY:登录\t n:注册\n");
     while(1){
         fgets(buf,sizeof(buf),stdin);
         write(fd,buf,strlen(buf));

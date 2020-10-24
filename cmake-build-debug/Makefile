@@ -128,6 +128,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named client4
+
+# Build rule for target.
+client4: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client4
+.PHONY : client4
+
+# fast build rule for target.
+client4/fast:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/build
+.PHONY : client4/fast
+
+#=============================================================================
+# Target rules for targets named client2
+
+# Build rule for target.
+client2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client2
+.PHONY : client2
+
+# fast build rule for target.
+client2/fast:
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/build
+.PHONY : client2/fast
+
+#=============================================================================
 # Target rules for targets named client1
 
 # Build rule for target.
@@ -154,6 +180,19 @@ client/fast:
 .PHONY : client/fast
 
 #=============================================================================
+# Target rules for targets named client3
+
+# Build rule for target.
+client3: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client3
+.PHONY : client3
+
+# fast build rule for target.
+client3/fast:
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/build
+.PHONY : client3/fast
+
+#=============================================================================
 # Target rules for targets named server
 
 # Build rule for target.
@@ -172,8 +211,11 @@ client.o: client.cpp.o
 
 # target to build an object file
 client.cpp.o:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/client.cpp.o
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/client.cpp.o
 	$(MAKE) -f CMakeFiles/client1.dir/build.make CMakeFiles/client1.dir/client.cpp.o
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.o
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/client.cpp.o
 .PHONY : client.cpp.o
 
 client.i: client.cpp.i
@@ -182,8 +224,11 @@ client.i: client.cpp.i
 
 # target to preprocess a source file
 client.cpp.i:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/client.cpp.i
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/client.cpp.i
 	$(MAKE) -f CMakeFiles/client1.dir/build.make CMakeFiles/client1.dir/client.cpp.i
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.i
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/client.cpp.i
 .PHONY : client.cpp.i
 
 client.s: client.cpp.s
@@ -192,8 +237,11 @@ client.s: client.cpp.s
 
 # target to generate assembly for a file
 client.cpp.s:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/client.cpp.s
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/client.cpp.s
 	$(MAKE) -f CMakeFiles/client1.dir/build.make CMakeFiles/client1.dir/client.cpp.s
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/client.cpp.s
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/client.cpp.s
 .PHONY : client.cpp.s
 
 common.o: common.cpp.o
@@ -202,8 +250,11 @@ common.o: common.cpp.o
 
 # target to build an object file
 common.cpp.o:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/common.cpp.o
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/common.cpp.o
 	$(MAKE) -f CMakeFiles/client1.dir/build.make CMakeFiles/client1.dir/common.cpp.o
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/common.cpp.o
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/common.cpp.o
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/common.cpp.o
 .PHONY : common.cpp.o
 
@@ -213,8 +264,11 @@ common.i: common.cpp.i
 
 # target to preprocess a source file
 common.cpp.i:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/common.cpp.i
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/common.cpp.i
 	$(MAKE) -f CMakeFiles/client1.dir/build.make CMakeFiles/client1.dir/common.cpp.i
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/common.cpp.i
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/common.cpp.i
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/common.cpp.i
 .PHONY : common.cpp.i
 
@@ -224,8 +278,11 @@ common.s: common.cpp.s
 
 # target to generate assembly for a file
 common.cpp.s:
+	$(MAKE) -f CMakeFiles/client4.dir/build.make CMakeFiles/client4.dir/common.cpp.s
+	$(MAKE) -f CMakeFiles/client2.dir/build.make CMakeFiles/client2.dir/common.cpp.s
 	$(MAKE) -f CMakeFiles/client1.dir/build.make CMakeFiles/client1.dir/common.cpp.s
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/common.cpp.s
+	$(MAKE) -f CMakeFiles/client3.dir/build.make CMakeFiles/client3.dir/common.cpp.s
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/common.cpp.s
 .PHONY : common.cpp.s
 
@@ -266,6 +323,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... client"
 	@echo "... client1"
+	@echo "... client2"
+	@echo "... client3"
+	@echo "... client4"
 	@echo "... server"
 	@echo "... client.o"
 	@echo "... client.i"

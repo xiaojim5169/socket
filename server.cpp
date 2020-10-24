@@ -1,54 +1,67 @@
 #include "common.h"
 int main(){
-    int lfd,cfd;                         //lfd用来监听，cfd是具体的客户套接字
+    int listenfd,connfd,epfd,sockfd;                //lfd用来监听，cfd是具体的客户套接字,epfd接收一个epoll句柄
     struct sockaddr_in serv_addr{},clie_addr{};
     socklen_t addrlen;
-    int n,i;
+    int opt = 1;
+    int n,i,nReady;
+    int num=0;
     char buf[1024];
-    char ip[1024];
-    pid_t pid;
+    char str[1024];
+//    pid_t pid;
+    struct epoll_event tep{},ep[SIZE];
+
+    epfd =Epoll_create(SIZE);      //创建epoll句柄，并设定建议监听值SIZE
+
+    listenfd=Socket(AF_INET,SOCK_STREAM,0);
+    Setsockopt(listenfd,SOL_SOCKET,SO_REUSEADDR,&opt,sizeof(opt));  //设置端口复用
+
     //初始化结构体serv_addr
-    bzero(&clie_addr,sizeof(clie_addr));
-    lfd=Socket(AF_INET,SOCK_STREAM,0);
-    serv_addr.sin_port=htons(9988);
+    bzero(&serv_addr,sizeof(serv_addr));
+    serv_addr.sin_port=htons(SERV_PORT);
     serv_addr.sin_family=AF_INET;
     serv_addr.sin_addr.s_addr=htonl(INADDR_ANY);
-    addrlen=sizeof(clie_addr);
 
-    Bind(lfd,(struct sockaddr*)&serv_addr,sizeof(serv_addr));
 
-    listen(lfd,30);
+    Bind(listenfd,(struct sockaddr*)&serv_addr,sizeof(serv_addr));
+    listen(listenfd,SIZE);
+    tep.events = EPOLLIN;
+    tep.data.fd = listenfd;
+    Epoll_ctl(epfd,EPOLL_CTL_ADD,listenfd,&tep);
     while(true){
-        cfd=Accept(lfd,(struct sockaddr*)&clie_addr,&addrlen);
-        printf("sadasdasd");
-        printf("client ip = %s",inet_ntop(AF_INET,&clie_addr.sin_addr.s_addr,ip,sizeof(ip)));
-        pid=fork();
-        if(pid==0){            //子进程
-            close(lfd);
-            break;
-        }
-        else if(pid==-1){      //创建子进程失败的处理
-            perror("fork error");
-            exit(-1);
-        }else{
-            close(cfd);                //父进程关闭cfd
-            signal(SIGCHLD,wait_child);//注册信号捕捉函数，回收子进程
-        }
-    }
-    while(true){    //子进程任务
-        n=read(cfd,buf,sizeof(buf));
-        if(n==0){
-            close(cfd);
-            return 0;
-        }else if(n<0){
-            perror("read error");
-            exit(-1);
-        }else{
-            write(STDOUT_FILENO,buf,n);
-            for(i=0;i<n;i++){
-                buf[i]=toupper(buf[i]);
+        nReady = Epoll_wait(epfd,ep,SIZE,10);
+        for(i=0;i<nReady;i++){
+            if(!(ep[i].events&EPOLLIN)){
+                continue;
             }
-            write(cfd,buf,n);
+            if(ep[i].data.fd==listenfd){
+                bzero(&clie_addr,sizeof(clie_addr));
+                addrlen=sizeof(clie_addr);
+                connfd=Accept(listenfd,(struct sockaddr*)&clie_addr,&addrlen);
+                printf("Received from %s at %d\n",inet_ntop(AF_INET,&clie_addr.sin_addr,str,sizeof(str)),ntohs(clie_addr.sin_port));
+                printf("cfd %d---client %d\n",connfd,++num);
+                tep.events = EPOLLIN;
+                tep.data.fd = connfd;
+                Epoll_ctl(epfd,EPOLL_CTL_ADD,connfd,&tep);
+            }
+            else{
+                sockfd = ep[i].data.fd;
+                n = read(sockfd,buf,sizeof(buf));
+                if(n==0){
+                    Epoll_ctl(epfd,EPOLL_CTL_DEL,sockfd, nullptr);
+                    Close(sockfd);
+                    printf("client[%d] closed connection\n",sockfd);
+                }else if(n<0){
+                    perror("read n <0 error");
+                    Epoll_ctl(epfd,EPOLL_CTL_DEL,sockfd, nullptr);
+                    Close(sockfd);
+                }else{
+                    write(STDOUT_FILENO,buf,n);
+                    write(sockfd,buf,n);
+                }
+            }
         }
     }
+    Close(listenfd);
+    return 0;
 }
