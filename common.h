@@ -16,9 +16,10 @@
 #define SIZE 100
 #define SERV_PORT 9988
 typedef struct message{
-    int id;
-    char password;
-}msg;
+    char id[11];
+    char password[13];
+    char data[1000];
+}Msg;
 
 
 int Socket(int domain, int type, int protocol);
@@ -31,5 +32,4 @@ int Epoll_create(int size);
 void Epoll_ctl(int epfd,int op,int fd,struct epoll_event *event);
 int Epoll_wait(int epfd,struct epoll_event *events,int maxevents, int timeout);
 void Setsockopt(int sockfd,int level,int optname,const void *optval,socklen_t optlen);
-size_t Read(int fd, void *buf, size_t count);
 #endif //SOCKET_COMMON_H

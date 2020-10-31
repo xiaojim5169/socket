@@ -76,8 +76,3 @@ void Setsockopt(int sockfd, int level,int optname,const void *optval, socklen_t 
         exit(-1);
     }
 }
-size_t Read(int fd, void *buf, size_t count){
-    int n;
-    n=Read(fd,buf,count);
-    return n;
-}

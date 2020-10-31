@@ -10,6 +10,7 @@ int main(){
     char str[1024];
 //    pid_t pid;
     struct epoll_event tep{},ep[SIZE];
+    Msg msg;
 
     epfd =Epoll_create(SIZE);      //创建epoll句柄，并设定建议监听值SIZE
 
@@ -46,6 +47,7 @@ int main(){
             }
             else{
                 sockfd = ep[i].data.fd;
+                memset(buf,0,sizeof(buf));
                 n = read(sockfd,buf,sizeof(buf));
                 if(n==0){
                     Epoll_ctl(epfd,EPOLL_CTL_DEL,sockfd, nullptr);
@@ -56,8 +58,10 @@ int main(){
                     Epoll_ctl(epfd,EPOLL_CTL_DEL,sockfd, nullptr);
                     Close(sockfd);
                 }else{
-                    write(STDOUT_FILENO,buf,n);
-                    write(sockfd,buf,n);
+                    memset(&msg,0,sizeof(msg));
+                    memcpy(&msg,buf,sizeof(msg));
+                    printf("%s,%s,%s\n",msg.id,msg.password,msg.data);
+                    write(sockfd,buf,sizeof(buf));
                 }
             }
         }
