@@ -21,7 +21,6 @@ typedef struct message{
     char data[1000];
 }Msg;
 
-
 int Socket(int domain, int type, int protocol);
 void Bind(int sockfd, const struct sockaddr *addr,socklen_t addrlen);
 int Accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
@@ -32,4 +31,5 @@ int Epoll_create(int size);
 void Epoll_ctl(int epfd,int op,int fd,struct epoll_event *event);
 int Epoll_wait(int epfd,struct epoll_event *events,int maxevents, int timeout);
 void Setsockopt(int sockfd,int level,int optname,const void *optval,socklen_t optlen);
+Msg clLogin();//客户端登陆函数
 #endif //SOCKET_COMMON_H
