@@ -21,7 +21,7 @@ int main(){
     bzero(&serv_addr,sizeof(serv_addr));
     serv_addr.sin_port=htons(SERV_PORT);
     serv_addr.sin_family=AF_INET;
-    serv_addr.sin_addr.s_addr=htonl(INADDR_ANY);
+    serv_addr.sin_addr.s_addr=inet_addr(SERV_ADDR);
 
 
     Bind(listenfd,(struct sockaddr*)&serv_addr,sizeof(serv_addr));

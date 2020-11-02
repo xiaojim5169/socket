@@ -11,7 +11,7 @@ int main(){
     fd=Socket(AF_INET,SOCK_STREAM,0);
     addr.sin_family = AF_INET;
     addr.sin_port = htons(9988);
-    inet_pton(AF_INET,IP,&addr.sin_addr.s_addr);
+    inet_pton(AF_INET,SERV_ADDR,&addr.sin_addr.s_addr);
 
     Connect(fd,(struct sockaddr *)&addr,sizeof(addr));
     msg=clLogin();
