@@ -15,7 +15,8 @@
 //用cat /proc/sys/fs/file-max 得到wsl的最大可建立的套接字数目为1048576
 #define SIZE 100
 #define SERV_PORT 9988
-#define SERV_ADDR "152.136.119.166"
+#define SERV_ADDR "10.0.8.13"
+#define CLIE_ADDR "152.136.119.166"
 typedef struct message{
     char id[11];
     char password[13];
